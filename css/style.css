@@ -1,0 +1,320 @@
+
+body {
+  font-family: "Lato", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  background: #fff;
+}
+
+#page {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+a {
+  color: #61dbff;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+a:hover, a:active, a:focus {
+  color: #61dbff;
+  outline: none;
+  text-decoration: none;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+h1, h2, h3, h4, h5, h6, figure {
+  color: #000;
+  font-family: "Lato", Arial, sans-serif;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+}
+
+::-webkit-selection {
+  color: #fff;
+  background: #61dbff;
+}
+
+::-moz-selection {
+  color: #fff;
+  background: #61dbff;
+}
+
+::selection {
+  color: #fff;
+  background: #61dbff;
+}
+
+.gtco-container {
+  max-width: 1100px;
+  position: relative;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#gtco-header {
+  background: #4d4d4d;
+}
+
+#gtco-header .mt-text {
+  margin-top: 7em;
+  margin-bottom: 3em;
+}
+
+#gtco-header .intro-text-small {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: .15em;
+  display: block;
+  margin-bottom: 10px;
+}
+#gtco-header h1, #gtco-header h2 {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+#gtco-header h1 {
+  margin-bottom: 0px;
+  font-size: 59px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+#gtco-header h2 {
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+#gtco-header .form-wrap {
+  border-top: 10px solid #09C6AB;
+  position: relative;
+  width: 100%;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+}
+#gtco-header .form-wrap .tab-menu {
+  padding: 0 !important;
+  margin: 0 0 -10px 0 !important;
+  width: 100%;
+  float: left;
+  z-index: 12;
+  position: relative;
+}
+#gtco-header .form-wrap .tab-menu li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: inline;
+  float: left;
+  width: 50%;
+  text-align: center;
+}
+#gtco-header .form-wrap .tab-menu li a {
+  padding: 10px 20px 20px 20px;
+  float: left;
+  width: 100%;
+  display: block;
+  background: rgba(255, 255, 255, 0.5);
+  color: #1a1a1a;
+}
+#gtco-header .form-wrap .tab-menu li a:hover {
+  color: #1a1a1a;
+}
+#gtco-header .form-wrap .tab-menu li.active a {
+  display: block;
+  padding: 10px 20px 20px 20px;
+  background: #fff;
+  color: #09C6AB;
+}
+#gtco-header .form-wrap .tab-menu li.gtco-first a {
+  border-top-left-radius: 7px;
+}
+#gtco-header .form-wrap .tab-menu li.gtco-second a {
+  border-top-right-radius: 7px;
+}
+#gtco-header .form-wrap .tab-content {
+  z-index: 10;
+  position: relative;
+  clear: both;
+  background: #fff;
+  padding: 30px;
+}
+#gtco-header .form-wrap .tab-content .tab-content-inner {
+  display: none;
+}
+#gtco-header .form-wrap .tab-content .tab-content-inner.active {
+  display: block;
+}
+
+#gtco-header,
+#gtco-counter {
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.gtco-cover {
+  height: 949px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  float: left;
+  width: 100%;
+}
+.gtco-cover a {
+  color: #09C6AB;
+}
+.gtco-cover a:hover {
+  color: blue;
+}
+.gtco-cover .overlay {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.gtco-cover > .gtco-container {
+  position: relative;
+  z-index: 10;
+}
+
+form label {
+  font-weight: normal !important;
+}
+
+#gtco-header .display-tc,
+#gtco-counter .display-tc,
+.gtco-cover .display-tc {
+  display: table-cell !important;
+  vertical-align: middle;
+}
+#gtco-header .display-tc .intro-text-small,
+#gtco-counter .display-tc .intro-text-small,
+.gtco-cover .display-tc .intro-text-small {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: .15em;
+  display: block;
+  margin-bottom: 10px;
+}
+#gtco-header .display-tc h1, #gtco-header .display-tc h2,
+#gtco-counter .display-tc h1,
+#gtco-counter .display-tc h2,
+.gtco-cover .display-tc h1,
+.gtco-cover .display-tc h2 {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+#gtco-header .display-tc h1,
+#gtco-counter .display-tc h1,
+.gtco-cover .display-tc h1 {
+  margin-bottom: 0px;
+  font-size: 59px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+#gtco-header .display-tc h2,
+#gtco-counter .display-tc h2,
+.gtco-cover .display-tc h2 {
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.btn {
+  margin-right: 4px;
+  margin-bottom: 4px;
+  font-family: "Lato", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  padding: 8px 30px;
+}
+
+.btn:hover, .btn:active, .btn:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.btn-primary {
+  background: #09C6AB;
+  color: #fff;
+  border: 2px solid #09C6AB !important;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background: #0adec0 !important;
+  border-color: #0adec0 !important;
+}
+.btn-primary.btn-outline {
+  background: transparent;
+  color: #09C6AB;
+  border: 2px solid #09C6AB;
+}
+.btn-primary.btn-outline:hover, .btn-primary.btn-outline:focus, .btn-primary.btn-outline:active {
+  background: #09C6AB;
+  color: #fff;
+}
+
+.form-control {
+  box-shadow: none;
+  background: transparent;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  height: 46px;
+  font-size: 16px;
+  font-weight: 300;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.form-control:active, .form-control:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #09C6AB;
+}
+
+.row-mt-15em {
+  margin-top: 15em;
+}
+
+.gtco-loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url(../images/loader.gif) center no-repeat #fff;
+}
+
+.js .animate-box {
+  opacity: 0;
+}
