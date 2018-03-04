@@ -33,19 +33,17 @@ h1, h2, h3, h4 , h5, h6 {
     margin-top: 20px;
     font-size: 25px;
     padding: 10px;
-    /*color: #61dbff;*/
+    color: #777;
     background: url("images/search.png");
     background: rgba(0, 0, 0, 0.4);
 }
 
-/*::placeholder {
-	color: #61dbff;
-}*/
-
 /* When the input field gets focus, change its width to 100% */
 #search:focus {
     width: 60%;
+    color: #888;
 }
+
 
 .topnav {
 	width: 100%;
