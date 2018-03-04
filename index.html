@@ -36,11 +36,17 @@
 
         <div class="gtco-loader"></div>
 
+        <div class="topnav">
+            <div class="color-bar-2 color-bg"></div>
+            <input id="search" type="text" placeholder="Search..">
+        </div>
+
         <div class="sidenav">
+            <div class="color-bar-2 color-bg"></div>
             <button><img src="images/icon.png"></button>
             <div>&#160;&#160;&#160;&#160;&#160;&#160;------------------------------</div>
             <button id="library" onclick="toggleSubMenu(this.id)">My Library</button>
-            <div class="submenu">
+            <div id="initSubMenu" class="submenu">
                 <button>Songs</button>
                 <button>Albums</button>
                 <button>Playlists</button>
@@ -78,19 +84,14 @@
                 </div>
             </div>
         </div>
-
-        <!-- Color Bars (above header)-->
-    	<div class="color-bar-1"></div>
-        <div class="color-bar-2 color-bg"></div>
         
-        <div class="container">
+        <div class="container main">
         
             <div class="row header"><!-- Begin Header -->
           
         	<div class="span12">
 
                 <h1 id="title">Digital Music Distributors</h1>
-                <input id="search" type="text" placeholder="Search..">
 
                 <h5 class="title-bg"><small>Recently Played</small>
                     <button class="btn btn-mini btn-inverse hidden-phone" type="button">Show all</button>
