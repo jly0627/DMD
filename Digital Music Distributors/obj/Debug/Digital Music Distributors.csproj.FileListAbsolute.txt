@@ -1,0 +1,18 @@
+C:\Users\Jake Yang\source\repos\WebApplication1\WebApplication1\bin\WebApplication1.dll.config
+C:\Users\Jake Yang\source\repos\WebApplication1\WebApplication1\bin\WebApplication1.dll
+C:\Users\Jake Yang\source\repos\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+C:\Users\Jake Yang\source\repos\WebApplication1\WebApplication1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Jake Yang\source\repos\WebApplication1\WebApplication1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Jake Yang\source\repos\WebApplication1\WebApplication1\obj\Debug\Digital Music Distributors.csproj.CoreCompileInputs.cache
+C:\Users\Jake Yang\source\repos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\Jake Yang\source\repos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\Jake Yang\source\repos\WebApplication1\WebApplication1\obj\Debug\Digital Music Distributors.csprojResolveAssemblyReference.cache
+C:\Users\Jake Yang\source\repos\WebApplication1\Digital Music Distributors\bin\WebApplication1.dll.config
+C:\Users\Jake Yang\source\repos\WebApplication1\Digital Music Distributors\bin\WebApplication1.dll
+C:\Users\Jake Yang\source\repos\WebApplication1\Digital Music Distributors\bin\WebApplication1.pdb
+C:\Users\Jake Yang\source\repos\WebApplication1\Digital Music Distributors\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Jake Yang\source\repos\WebApplication1\Digital Music Distributors\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Jake Yang\source\repos\WebApplication1\Digital Music Distributors\obj\Debug\Digital Music Distributors.csprojResolveAssemblyReference.cache
+C:\Users\Jake Yang\source\repos\WebApplication1\Digital Music Distributors\obj\Debug\Digital Music Distributors.csproj.CoreCompileInputs.cache
+C:\Users\Jake Yang\source\repos\WebApplication1\Digital Music Distributors\obj\Debug\WebApplication1.dll
+C:\Users\Jake Yang\source\repos\WebApplication1\Digital Music Distributors\obj\Debug\WebApplication1.pdb

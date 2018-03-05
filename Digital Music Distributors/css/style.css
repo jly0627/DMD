@@ -1,0 +1,263 @@
+
+body {
+  font-family: "Lato", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  background: #fff;
+}
+
+/* createAccount */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 9% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* end createAccount */
+
+#page {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.onlytext {
+  color: #61dbff;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  text-decoration: none;
+  outline: none;
+}
+
+#newText {
+  display: none;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+h1, h2, h3, h4, h5, h6, figure {
+  color: #000;
+  font-family: "Lato", Arial, sans-serif;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+}
+
+img {
+  padding-left: 35px;
+}
+
+.onlytext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+}
+
+.gtco-container {
+  max-width: 1100px;
+  position: relative;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#gtco-header {
+  background: #4d4d4d;
+}
+
+#gtco-header .mt-text {
+  margin-top: 7em;
+  margin-bottom: 3em;
+}
+
+#gtco-header h1 {
+  margin: 0;
+  padding: 0;
+  color: white;
+  margin-bottom: 0px;
+  font-size: 59px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+#gtco-header .form-wrap {
+  border-top: 10px solid #61dbff;
+  position: relative;
+  width: 100%;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+}
+
+#gtco-header .form-wrap .tab-content {
+  z-index: 10;
+  position: relative;
+  clear: both;
+  background: #fff;
+  padding: 30px;
+}
+
+#gtco-header, #gtco-counter {
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.gtco-cover {
+  height: 949px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+.onlytext:hover, .btn-primary:hover {
+  color: blue;
+}
+.gtco-cover .overlay {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.gtco-cover > .gtco-container {
+  position: relative;
+  z-index: 10;
+}
+
+.btn {
+  margin-right: 4px;
+  margin-bottom: 4px;
+  font-family: "Lato", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  padding: 8px 30px;
+}
+
+.btn:hover, .btn:active, .btn:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.btn-primary {
+  background: #61dbff;
+  color: #fff;
+  border: 2px solid #61dbff !important;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background: #38c7ff !important;
+  border-color: #38c7ff !important;
+}
+.btn-primary.btn-outline {
+  background: transparent;
+  color: #61dbff;
+  border: 2px solid #61dbff;
+}
+.btn-primary.btn-outline:hover, .btn-primary.btn-outline:focus, .btn-primary.btn-outline:active {
+  background: #61dbff;
+  color: #fff;
+}
+
+.form-control {
+  box-shadow: none;
+  background: transparent;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  height: 46px;
+  font-size: 16px;
+  font-weight: 300;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.name {
+  float: left;
+}
+
+#firstName {
+  clear: left;
+  float: left;
+  width: 40%;
+}
+
+#lastName {
+  clear: right;
+  float: right;
+  width: 40%;
+}
+
+.form-control:active, .form-control:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #61dbff;
+}
+
+.row-mt-15em {
+  margin-top: 9em;
+}
+
+.form-wrap {
+  margin-top: 6em;
+}
+
+.gtco-loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url(../images/loader.gif) center no-repeat #fff;*/
+}
+
+.js .animate-box {
+  opacity: 0;
+}
