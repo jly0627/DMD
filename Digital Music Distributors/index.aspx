@@ -1,3 +1,4 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" %>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -5,7 +6,7 @@
         <!-- CSS
         ================================================== -->
         <link rel="stylesheet" href="css/bootstrapOld.css">
-        <link rel="stylesheet" href="css/bootstrap-responsive.css">
+        
         <!-- <link rel="stylesheet" href="css/flexslider.css" /> -->
         <link rel="stylesheet" href="css/custom-styles.css">
         <!-- Animate.css -->
@@ -33,8 +34,6 @@
     </head>
 
     <body class="home">
-
-        <form id="form1" runat="server">
 
         <div class="gtco-loader"></div>
 
@@ -86,186 +85,164 @@
                 </div>
             </div>
         </div>
-        
-        <div class="container main">
-        
+
+        <form id="form1" runat="server">
+            <div class="container main">
+
             <div class="row header"><!-- Begin Header -->
           
-        	<div class="span12">
+        	        <div class="span12">
 
-                <h1 id="title">Digital Music Distributors</h1>
+                        <h1 id="title">Digital Music Distributors</h1>
 
-                <h5 class="title-bg"><small>Recently Played</small>
-                    <button class="btn btn-mini btn-inverse hidden-phone" type="button">Show all</button>
-                </h5>
+                        <h5 class="title-bg"><small>Recently Played</small></h5>
+                            <div class="dropdown">
+                              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                              <span class="caret"></span></button>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">HTML</a></li>
+                                <li><a href="#">CSS</a></li>
+                                <li><a href="#">JavaScript</a></li>
+                              </ul>
+                            </div>
+                    
 
-                <h5 class="title-bg"><small>Trending now</small>
-                    <button class="btn btn-mini btn-inverse hidden-phone" type="button">Show all</button>
-                </h5>
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+                                               SelectCommand="SELECT SONG.TITLE as Song_title, SONG.LENGTH as Song_length, ALBUM.TITLE as Album_title, ARTIST.NAME AS Artist_name FROM SONG 
+                                               LEFT JOIN ALBUM ON SONG.ALBUM_ID = ALBUM.ALBUM_ID LEFT JOIN ARTIST ON SONG.ARTIST_ID = ARTIST.ARTIST_ID"></asp:SqlDataSource>
+                        <asp:ListView ID="ListView3" DataSourceID="SqlDataSource1" runat="server">
+                            <LayoutTemplate>
+                                <table runat="server" id="table1" >
+                                    <tr runat="server" style="background-color: #98FB98">
+                                        <th runat="server">Name</th>
+                                        <th runat="server">Length</th>
+                                        <th runat="server">Artist</th>
+                                        <th runat="server">Album</th>
+                                    </tr>
+                                    <tr runat="server" id="itemPlaceholder" />
+                                </table>
+                                <asp:DataPager ID="DataPager1" runat="server">
+                                    <Fields>
+                                        <asp:NumericPagerField />
+                                    </Fields>
+                                </asp:DataPager>
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <tr runat="server">
+                                    <td runat="server">
+                                        <%-- Data-bound content. --%>
+                                        <asp:Label ID="NameLabel" runat="server" Text='<%#Eval("Song_title")%>' />
+                                    </td>
+                                    <td runat="server">
+                                        <%-- Data-bound content. --%>
+                                        <asp:Label ID="Label4" runat="server" Text='<%#Eval("Song_length")%>' />
+                                    </td>
+                                    <td runat="server">
+                                        <%-- Data-bound content. --%>
+                                        <asp:Label ID="Label2" runat="server" Text='<%#Eval("Artist_name")%>' />
+                                    </td>
+                                    <td runat="server">
+                                        <%-- Data-bound content. --%>
+                                        <asp:Label ID="Label3" runat="server" Text='<%#Eval("Album_title")%>' />
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:ListView>
 
-                <h5 class="title-bg"><small>New Releases</small>
-                    <button class="btn btn-mini btn-inverse hidden-phone" type="button">Show all</button>
-                </h5>
-        	
-            <!-- Gallery Thumbnails
-            ================================================== -->
+                        <h5 class="title-bg"><small>Trending now</small>
+                            <button class="btn btn-mini btn-inverse hidden-phone" type="button">Show all</button>
+                        </h5>
 
-                <div class="row clearfix no-margin">
-                <ul class="gallery-post-grid holder">
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+                                            SelectCommand="SELECT SONG.TITLE as Song_title, SONG.LENGTH as Song_length, ALBUM.TITLE as Album_title, ARTIST.NAME AS Artist_name FROM SONG 
+                                            LEFT JOIN ALBUM ON SONG.ALBUM_ID = ALBUM.ALBUM_ID LEFT JOIN ARTIST ON SONG.ARTIST_ID = ARTIST.ARTIST_ID"></asp:SqlDataSource>
+                        <asp:ListView ID="ListView1" DataSourceID="SqlDataSource1" runat="server">
+                            <LayoutTemplate>
+                                <table runat="server" id="table1" >
+                                    <tr runat="server" style="background-color: #98FB98">
+                                        <th runat="server">Name</th>
+                                        <th runat="server">Length</th>
+                                        <th runat="server">Artist</th>
+                                        <th runat="server">Album</th>
+                                    </tr>
+                                    <tr runat="server" id="itemPlaceholder" />
+                                </table>
+                                <asp:DataPager ID="DataPager1" runat="server">
+                                    <Fields>
+                                        <asp:NumericPagerField />
+                                    </Fields>
+                                </asp:DataPager>
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <tr runat="server">
+                                    <td runat="server">
+                                        <%-- Data-bound content. --%>
+                                        <asp:Label ID="NameLabel" runat="server" Text='<%#Eval("Song_title")%>' />
+                                    </td>
+                                    <td runat="server">
+                                        <%-- Data-bound content. --%>
+                                        <asp:Label ID="Label4" runat="server" Text='<%#Eval("Song_length")%>' />
+                                    </td>
+                                    <td runat="server">
+                                        <%-- Data-bound content. --%>
+                                        <asp:Label ID="Label2" runat="server" Text='<%#Eval("Artist_name")%>' />
+                                    </td>
+                                    <td runat="server">
+                                        <%-- Data-bound content. --%>
+                                        <asp:Label ID="Label3" runat="server" Text='<%#Eval("Album_title")%>' />
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:ListView>
 
-                    <!-- Gallery Item 1 -->
-                    <li  class="span3 gallery-item" data-id="id-1" data-type="illustration">
-                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="images/gallery-img-1-4col.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">TEST</a>TEST</span>
-                    </li>
+                        <h5 class="title-bg"><small>New Releases</small>
+                            <button class="btn btn-mini btn-inverse hidden-phone" type="button">Show all</button>
+                        </h5>
 
-                    <!-- Gallery Item 2 -->
-                    <li class="span3 gallery-item" data-id="id-2" data-type="illustration">
-                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="images/gallery-img-1-4col.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">TEST</a>TEST</span>
-                    </li>
-
-                    <!-- Gallery Item 3 -->
-                    <li class="span3 gallery-item" data-id="id-3" data-type="web">
-                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="#" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="images/gallery-img-1-4col.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">TEST</a>TEST</span>
-                    </li>
-
-                    <!-- Gallery Item 4 -->
-                    <li class="span3 gallery-item" data-id="id-4" data-type="video">
-                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="images/gallery-img-1-4col.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">TEST</a>TEST</span>
-                    </li>
-
-                    <!-- Gallery Item 5 -->
-                    <li class="span3 gallery-item" data-id="id-5" data-type="web illustration">
-                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="images/gallery-img-1-4col.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">TEST</a>TEST</span>
-                    </li>
-
-                    <!-- Gallery Item 6 -->
-                    <li class="span3 gallery-item" data-id="id-6" data-type="illustration design">
-                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="images/gallery-img-1-4col.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">TEST</a>TEST</span>
-                    </li>
-
-                    <!-- Gallery Item 7 -->
-                    <li class="span3 gallery-item" data-id="id-7" data-type="design">
-                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="images/gallery-img-1-4col.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">TEST</a>TEST</span>
-                    </li>
-
-                    <!-- Gallery Item 8 -->
-                    <li class="span3 gallery-item" data-id="id-8" data-type="web video">
-                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="images/gallery-img-1-4col.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">TEST</a>TEST</span>
-                    </li>
-
-                    <!-- Gallery Item 9 -->
-                    <li class="span3 gallery-item" data-id="id-9" data-type="design">
-                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="images/gallery-img-1-4col.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">TEST</a>TEST</span>
-                    </li>
-
-                    <!-- Gallery Item 10 -->
-                    <li class="span3 gallery-item" data-id="id-10" data-type="web design">
-                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="images/gallery-img-1-4col.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">TEST</a>TEST</span>
-                    </li>
-
-                    <!-- Gallery Item 11 -->
-                    <li class="span3 gallery-item" data-id="id-11" data-type="illustration">
-                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="images/gallery-img-1-4col.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">TEST</a>TEST</span>
-                    </li>
-
-                    <!-- Gallery Item 12 -->
-                    <li class="span3 gallery-item" data-id="id-12" data-type="illustration video">
-                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
-                            </span>
-                        </span>
-                        <a href="gallery-single.htm"><img src="images/gallery-img-1-4col.jpg" alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm">TEST</a>TEST</span>
-                    </li>
-                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Title" DataValueField="Title">
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Title] FROM [ALBUM]"></asp:SqlDataSource>
-                </ul>
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+                                               SelectCommand="SELECT SONG.TITLE as Song_title, SONG.LENGTH as Song_length, ALBUM.TITLE as Album_title, ARTIST.NAME AS Artist_name FROM SONG 
+                                               LEFT JOIN ALBUM ON SONG.ALBUM_ID = ALBUM.ALBUM_ID LEFT JOIN ARTIST ON SONG.ARTIST_ID = ARTIST.ARTIST_ID"></asp:SqlDataSource>
+                        <asp:ListView ID="ListView2" DataSourceID="SqlDataSource1" runat="server">
+                            <LayoutTemplate>
+                                <table runat="server" id="table1" >
+                                    <tr runat="server" style="background-color: #98FB98">
+                                        <th runat="server">Name</th>
+                                        <th runat="server">Length</th>
+                                        <th runat="server">Artist</th>
+                                        <th runat="server">Album</th>
+                                    </tr>
+                                    <tr runat="server" id="itemPlaceholder" />
+                                </table>
+                                <asp:DataPager ID="DataPager1" runat="server">
+                                    <Fields>
+                                        <asp:NumericPagerField />
+                                    </Fields>
+                                </asp:DataPager>
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <tr runat="server">
+                                    <td runat="server">
+                                        <%-- Data-bound content. --%>
+                                        <asp:Label ID="NameLabel" runat="server" Text='<%#Eval("Song_title")%>' />
+                                    </td>
+                                    <td runat="server">
+                                        <%-- Data-bound content. --%>
+                                        <asp:Label ID="Label4" runat="server" Text='<%#Eval("Song_length")%>' />
+                                    </td>
+                                    <td runat="server">
+                                        <%-- Data-bound content. --%>
+                                        <asp:Label ID="Label2" runat="server" Text='<%#Eval("Artist_name")%>' />
+                                    </td>
+                                    <td runat="server">
+                                        <%-- Data-bound content. --%>
+                                        <asp:Label ID="Label3" runat="server" Text='<%#Eval("Album_title")%>' />
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:ListView>
+                    </div>
                 </div>
             </div>
- 
-        </div><!-- End Gallery Row -->
-        
         </form>
-        
     </body>
 </html>
