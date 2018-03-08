@@ -1,3 +1,4 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" %>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -58,10 +59,10 @@
 								</div>
 								<div class="row form-group">
 									<div class="col-md-12">
-										<form action="index.aspx">
+                                        <form action="index.aspx">
 										<input type="submit" class="btn btn-primary btn-block" value="Log In">
-										</form>
-									</div>
+									    </form>
+                                    </div>
 								</div>
 							</div>
 						</div>
@@ -78,7 +79,7 @@
 					<div class="row form-group">
 						<div class="col-md-12">
 							<label for="email">Email address</label>
-							<input type="text" id="email" class="form-control">
+							<input type="text" id="createEmail" class="form-control">
 						</div>
 					</div>
 					<!-- <div class="row form-group"> -->
@@ -98,7 +99,7 @@
 					<div class="row form-group">
 						<div class="col-md-12">
 							<label for="password">Password</label>
-							<input type="text" id="password" class="form-control">
+							<input type="text" id="createPassword" class="form-control">
 						</div>
 					</div>
 					<div class="row form-group">
@@ -115,7 +116,6 @@
 				</div>
 			</div>
 		</div>
-
 	</body>
 
 </html>

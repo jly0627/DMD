@@ -18,3 +18,7 @@ function toggleDisplay(x) {
 		x.style.display = "block";
 	}
 }
+
+function toggleDropDown() {
+    document.getElementById("swag").classList.toggle("show");
+}

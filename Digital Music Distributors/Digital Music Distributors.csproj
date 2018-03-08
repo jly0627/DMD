@@ -84,7 +84,6 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrapOld.css" />
     <Content Include="css\custom-styles.css" />
-    <Content Include="css\flexslider.css" />
     <Content Include="css\style.css" />
     <Content Include="images\blackorchid.png" />
     <Content Include="images\gallery-img-1-4col.jpg" />
@@ -104,6 +103,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

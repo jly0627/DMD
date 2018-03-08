@@ -6,7 +6,6 @@
         <!-- CSS
         ================================================== -->
         <link rel="stylesheet" href="css/bootstrapOld.css">
-        
         <!-- <link rel="stylesheet" href="css/flexslider.css" /> -->
         <link rel="stylesheet" href="css/custom-styles.css">
         <!-- Animate.css -->
@@ -94,151 +93,240 @@
         	        <div class="span12">
 
                         <h1 id="title">Digital Music Distributors</h1>
-
-                        <h5 class="title-bg"><small>Recently Played</small></h5>
-                            <div class="dropdown">
-                              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-                              <span class="caret"></span></button>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">HTML</a></li>
-                                <li><a href="#">CSS</a></li>
-                                <li><a href="#">JavaScript</a></li>
-                              </ul>
-                            </div>
-                    
-
-                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-                                               SelectCommand="SELECT SONG.TITLE as Song_title, SONG.LENGTH as Song_length, ALBUM.TITLE as Album_title, ARTIST.NAME AS Artist_name FROM SONG 
-                                               LEFT JOIN ALBUM ON SONG.ALBUM_ID = ALBUM.ALBUM_ID LEFT JOIN ARTIST ON SONG.ARTIST_ID = ARTIST.ARTIST_ID"></asp:SqlDataSource>
-                        <asp:ListView ID="ListView3" DataSourceID="SqlDataSource1" runat="server">
-                            <LayoutTemplate>
-                                <table runat="server" id="table1" >
-                                    <tr runat="server" style="background-color: #98FB98">
-                                        <th runat="server">Name</th>
-                                        <th runat="server">Length</th>
-                                        <th runat="server">Artist</th>
-                                        <th runat="server">Album</th>
-                                    </tr>
-                                    <tr runat="server" id="itemPlaceholder" />
-                                </table>
-                                <asp:DataPager ID="DataPager1" runat="server">
-                                    <Fields>
-                                        <asp:NumericPagerField />
-                                    </Fields>
-                                </asp:DataPager>
-                            </LayoutTemplate>
+                        <h5 class="title-bg">Trending Now</h5>
+                        <button class="dropDownButton" onclick="toggleDropDown()">SONGS</button>
+                        <div class="dropDown" id="swag"> 
+                            <button class="dropDownItem">swag</button>
+                            <button class="dropDownItem">swag</button>
+                            <button class="dropDownItem">swag</button>
+                        </div>
+                        <asp:SqlDataSource ID="TrendingSongs" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT S.TITLE Song_title, S.LENGTH as Song_length, ALBUM.TITLE as Album_title, ARTIST.NAME AS Artist_name, avgRating
+FROM SONG S LEFT JOIN ALBUM ON S.ALBUM_ID = ALBUM.ALBUM_ID 
+LEFT JOIN ARTIST ON S.ARTIST_ID = ARTIST.ARTIST_ID
+LEFT JOIN (SELECT SONG.SONG_ID songID, AVG(SONG_RATINGS.RATING) avgRating
+    FROM SONG LEFT JOIN SONG_RATINGS ON SONG.SONG_ID = SONG_RATINGS.SONG_ID
+    GROUP BY SONG.SONG_ID) ratings ON S.SONG_ID = ratings.songID ORDER BY avgRating DESC;"></asp:SqlDataSource>
+						<asp:ListView ID="sTrending" runat="server" DataSourceID="TrendingSongs">
                             <ItemTemplate>
-                                <tr runat="server">
-                                    <td runat="server">
-                                        <%-- Data-bound content. --%>
-                                        <asp:Label ID="NameLabel" runat="server" Text='<%#Eval("Song_title")%>' />
+                                <tr class="songRow">
+                                    <td>
+                                        <asp:Label ID="Song_titleLabel" runat="server" Text='<%# Eval("Song_title") %>' />
                                     </td>
-                                    <td runat="server">
-                                        <%-- Data-bound content. --%>
-                                        <asp:Label ID="Label4" runat="server" Text='<%#Eval("Song_length")%>' />
+                                    <td>
+                                        <asp:Label class="timeLabel" runat="server" Text='<%# Eval("Song_length") %>' />
                                     </td>
-                                    <td runat="server">
-                                        <%-- Data-bound content. --%>
-                                        <asp:Label ID="Label2" runat="server" Text='<%#Eval("Artist_name")%>' />
+                                    <td>
+                                        <asp:Label ID="Album_titleLabel" runat="server" Text='<%# Eval("Artist_name") %>' />
                                     </td>
-                                    <td runat="server">
-                                        <%-- Data-bound content. --%>
-                                        <asp:Label ID="Label3" runat="server" Text='<%#Eval("Album_title")%>' />
+                                    <td>
+                                        <asp:Label ID="Artist_nameLabel" runat="server" Text='<%# Eval("Album_title") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label class="ratingLabel" runat="server" Text='<%# Eval("avgRating") %>' />
                                     </td>
                                 </tr>
                             </ItemTemplate>
+                            <LayoutTemplate>
+                                <table runat="server">
+                                    <tr runat="server">
+                                        <td runat="server">
+                                            <table id="itemPlaceholderContainer" runat="server" border="0" style="">
+                                                <tr class="songHeader">
+                                                    <th class="nameColumn" runat="server">NAME</th>
+                                                    <th class="timeColumn" runat="server"></th>
+                                                    <th class="artistColumn" runat="server">ARTIST</th>
+                                                    <th class="albumColumn" runat="server">ALBUM</th>
+                                                    <th runat="server">RATING</th>
+                                                </tr>
+                                                <tr id="itemPlaceholder" runat="server">
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr runat="server">
+                                        <td runat="server" class="pager">
+                                            <asp:DataPager ID="DataPager1" runat="server">
+                                                <Fields>
+                                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
+                                                </Fields>
+                                            </asp:DataPager>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </LayoutTemplate>
+                            <SelectedItemTemplate>
+                                <tr style="">
+                                    <td>
+                                        <asp:Label ID="Song_titleLabel" runat="server" Text='<%# Eval("Song_title") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="Song_lengthLabel" runat="server" Text='<%# Eval("Song_length") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="Album_titleLabel" runat="server" Text='<%# Eval("Artist_name") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="Artist_nameLabel" runat="server" Text='<%# Eval("Album_title") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="avgRatingLabel" runat="server" Text='<%# Eval("avgRating") %>' />
+                                    </td>
+                                </tr>
+                            </SelectedItemTemplate>
                         </asp:ListView>
 
-                        <h5 class="title-bg"><small>Trending now</small>
-                            <button class="btn btn-mini btn-inverse hidden-phone" type="button">Show all</button>
-                        </h5>
+                        <h5 class="title-bg">New Releases</h5>
+                        <button class="dropDownButton" onclick="toggleDropDown()">SONGS</button>
+                        <div class="dropDown" id="swag1"> 
+                            <button class="dropDownItem">swag</button>
+                            <button class="dropDownItem">swag</button>
+                            <button class="dropDownItem">swag</button>
+                        </div>
 
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-                                            SelectCommand="SELECT SONG.TITLE as Song_title, SONG.LENGTH as Song_length, ALBUM.TITLE as Album_title, ARTIST.NAME AS Artist_name FROM SONG 
-                                            LEFT JOIN ALBUM ON SONG.ALBUM_ID = ALBUM.ALBUM_ID LEFT JOIN ARTIST ON SONG.ARTIST_ID = ARTIST.ARTIST_ID"></asp:SqlDataSource>
-                        <asp:ListView ID="ListView1" DataSourceID="SqlDataSource1" runat="server">
-                            <LayoutTemplate>
-                                <table runat="server" id="table1" >
-                                    <tr runat="server" style="background-color: #98FB98">
-                                        <th runat="server">Name</th>
-                                        <th runat="server">Length</th>
-                                        <th runat="server">Artist</th>
-                                        <th runat="server">Album</th>
-                                    </tr>
-                                    <tr runat="server" id="itemPlaceholder" />
-                                </table>
-                                <asp:DataPager ID="DataPager1" runat="server">
-                                    <Fields>
-                                        <asp:NumericPagerField />
-                                    </Fields>
-                                </asp:DataPager>
-                            </LayoutTemplate>
-                            <ItemTemplate>
-                                <tr runat="server">
-                                    <td runat="server">
-                                        <%-- Data-bound content. --%>
-                                        <asp:Label ID="NameLabel" runat="server" Text='<%#Eval("Song_title")%>' />
+               			<asp:ListView ID="sNew" runat="server" DataSourceID="TrendingSongs">
+                         <ItemTemplate>
+                                <tr class="songRow">
+                                    <td>
+                                        <asp:Label ID="Song_titleLabel" runat="server" Text='<%# Eval("Song_title") %>' />
                                     </td>
-                                    <td runat="server">
-                                        <%-- Data-bound content. --%>
-                                        <asp:Label ID="Label4" runat="server" Text='<%#Eval("Song_length")%>' />
+                                    <td>
+                                        <asp:Label class="timeLabel" runat="server" Text='<%# Eval("Song_length") %>' />
                                     </td>
-                                    <td runat="server">
-                                        <%-- Data-bound content. --%>
-                                        <asp:Label ID="Label2" runat="server" Text='<%#Eval("Artist_name")%>' />
+                                    <td>
+                                        <asp:Label ID="Album_titleLabel" runat="server" Text='<%# Eval("Artist_name") %>' />
                                     </td>
-                                    <td runat="server">
-                                        <%-- Data-bound content. --%>
-                                        <asp:Label ID="Label3" runat="server" Text='<%#Eval("Album_title")%>' />
+                                    <td>
+                                        <asp:Label ID="Artist_nameLabel" runat="server" Text='<%# Eval("Album_title") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label class="ratingLabel" runat="server" Text='<%# Eval("avgRating") %>' />
                                     </td>
                                 </tr>
                             </ItemTemplate>
+                            <LayoutTemplate>
+                                <table runat="server">
+                                    <tr runat="server">
+                                        <td runat="server">
+                                            <table id="itemPlaceholderContainer" runat="server" border="0" style="">
+                                                <tr class="songHeader">
+                                                    <th class="nameColumn" runat="server">NAME</th>
+                                                    <th class="timeColumn" runat="server"></th>
+                                                    <th class="artistColumn" runat="server">ARTIST</th>
+                                                    <th class="albumColumn" runat="server">ALBUM</th>
+                                                    <th runat="server">RATING</th>
+                                                </tr>
+                                                <tr id="itemPlaceholder" runat="server">
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr runat="server">
+                                        <td runat="server" class="pager">
+                                            <asp:DataPager ID="DataPager1" runat="server">
+                                                <Fields>
+                                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
+                                                </Fields>
+                                            </asp:DataPager>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </LayoutTemplate>
+                            <SelectedItemTemplate>
+                                <tr style="">
+                                    <td>
+                                        <asp:Label ID="Song_titleLabel" runat="server" Text='<%# Eval("Song_title") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="Song_lengthLabel" runat="server" Text='<%# Eval("Song_length") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="Album_titleLabel" runat="server" Text='<%# Eval("Artist_name") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="Artist_nameLabel" runat="server" Text='<%# Eval("Album_title") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="avgRatingLabel" runat="server" Text='<%# Eval("avgRating") %>' />
+                                    </td>
+                                </tr>
+                            </SelectedItemTemplate>
                         </asp:ListView>
 
-                        <h5 class="title-bg"><small>New Releases</small>
-                            <button class="btn btn-mini btn-inverse hidden-phone" type="button">Show all</button>
-                        </h5>
+                        <h5 class="title-bg">Top Rated</h5>
+                        <button class="dropDownButton" onclick="toggleDropDown()">SONGS</button>
+                        <div class="dropDown" id="swag2"> 
+                            <button class="dropDownItem">swag</button>
+                            <button class="dropDownItem">swag</button>
+                            <button class="dropDownItem">swag</button>
+                        </div>
 
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-                                               SelectCommand="SELECT SONG.TITLE as Song_title, SONG.LENGTH as Song_length, ALBUM.TITLE as Album_title, ARTIST.NAME AS Artist_name FROM SONG 
-                                               LEFT JOIN ALBUM ON SONG.ALBUM_ID = ALBUM.ALBUM_ID LEFT JOIN ARTIST ON SONG.ARTIST_ID = ARTIST.ARTIST_ID"></asp:SqlDataSource>
-                        <asp:ListView ID="ListView2" DataSourceID="SqlDataSource1" runat="server">
-                            <LayoutTemplate>
-                                <table runat="server" id="table1" >
-                                    <tr runat="server" style="background-color: #98FB98">
-                                        <th runat="server">Name</th>
-                                        <th runat="server">Length</th>
-                                        <th runat="server">Artist</th>
-                                        <th runat="server">Album</th>
-                                    </tr>
-                                    <tr runat="server" id="itemPlaceholder" />
-                                </table>
-                                <asp:DataPager ID="DataPager1" runat="server">
-                                    <Fields>
-                                        <asp:NumericPagerField />
-                                    </Fields>
-                                </asp:DataPager>
-                            </LayoutTemplate>
-                            <ItemTemplate>
-                                <tr runat="server">
-                                    <td runat="server">
-                                        <%-- Data-bound content. --%>
-                                        <asp:Label ID="NameLabel" runat="server" Text='<%#Eval("Song_title")%>' />
+                        <asp:ListView ID="sTop" runat="server" DataSourceID="TrendingSongs">
+                           <ItemTemplate>
+                                <tr class="songRow">
+                                    <td>
+                                        <asp:Label ID="Song_titleLabel" runat="server" Text='<%# Eval("Song_title") %>' />
                                     </td>
-                                    <td runat="server">
-                                        <%-- Data-bound content. --%>
-                                        <asp:Label ID="Label4" runat="server" Text='<%#Eval("Song_length")%>' />
+                                    <td>
+                                        <asp:Label class="timeLabel" runat="server" Text='<%# Eval("Song_length") %>' />
                                     </td>
-                                    <td runat="server">
-                                        <%-- Data-bound content. --%>
-                                        <asp:Label ID="Label2" runat="server" Text='<%#Eval("Artist_name")%>' />
+                                    <td>
+                                        <asp:Label ID="Album_titleLabel" runat="server" Text='<%# Eval("Artist_name") %>' />
                                     </td>
-                                    <td runat="server">
-                                        <%-- Data-bound content. --%>
-                                        <asp:Label ID="Label3" runat="server" Text='<%#Eval("Album_title")%>' />
+                                    <td>
+                                        <asp:Label ID="Artist_nameLabel" runat="server" Text='<%# Eval("Album_title") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label class="ratingLabel" runat="server" Text='<%# Eval("avgRating") %>' />
                                     </td>
                                 </tr>
                             </ItemTemplate>
+                            <LayoutTemplate>
+                                <table runat="server">
+                                    <tr runat="server">
+                                        <td runat="server">
+                                            <table id="itemPlaceholderContainer" runat="server" border="0" style="">
+                                                <tr class="songHeader">
+                                                    <th class="nameColumn" runat="server">NAME</th>
+                                                    <th class="timeColumn" runat="server"></th>
+                                                    <th class="artistColumn" runat="server">ARTIST</th>
+                                                    <th class="albumColumn" runat="server">ALBUM</th>
+                                                    <th runat="server">RATING</th>
+                                                </tr>
+                                                <tr id="itemPlaceholder" runat="server">
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr runat="server">
+                                        <td runat="server" class="pager">
+                                            <asp:DataPager ID="DataPager1" runat="server">
+                                                <Fields>
+                                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
+                                                </Fields>
+                                            </asp:DataPager>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </LayoutTemplate>
+                            <SelectedItemTemplate>
+                                <tr style="">
+                                    <td>
+                                        <asp:Label ID="Song_titleLabel" runat="server" Text='<%# Eval("Song_title") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="Song_lengthLabel" runat="server" Text='<%# Eval("Song_length") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="Album_titleLabel" runat="server" Text='<%# Eval("Artist_name") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="Artist_nameLabel" runat="server" Text='<%# Eval("Album_title") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="avgRatingLabel" runat="server" Text='<%# Eval("avgRating") %>' />
+                                    </td>
+                                </tr>
+                            </SelectedItemTemplate>
                         </asp:ListView>
                     </div>
                 </div>
