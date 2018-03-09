@@ -15,7 +15,7 @@ function closeModal() {
 
 window.onclick = function(event) {
 	var newAccountModal = document.getElementById('newAccountModal');
-	if (event.target == newAccountModal) {
+	if (event.target === newAccountModal) {
 		newAccountModal.style.display = "none";
 	}
 }

@@ -148,6 +148,76 @@ h1, h2, h3, h4 , h5, h6 {
     padding-right: 80px;
 }
 
+.songLabel:hover, .albumCover:hover, .artistLabel:hover, .albumLabel:hover, .ratingLabel:hover, 
+.aAlbumLabel:hover, .aArtistLabel:hover, .aRatingLabel:hover, .aaArtistLabel:hover {
+    cursor: pointer;
+    color: #61dbff;
+}
+
+/*---------ALBUM TABLE----------*/
+.albumTable {
+    background: none;
+    border-collapse: collapse;
+    border-color: #999999;
+    border-style: none;
+    border-width: 1px;
+}
+
+.albumTD {
+    padding: 20px;
+}
+
+
+.albumCover {
+    padding-bottom: 10px;
+    margin-bottom: 0px;
+    opacity: 0.7;
+}
+
+.albumCover:hover {
+    opacity: 0.85;
+}
+
+.aAlbumLabel, .aArtistLabel, .aRatingLabel {
+    color: #818181;
+}
+
+.aAlbumLabel {
+    padding-top: 20px;
+    margin-top: 20px;
+    font-size: 23px;
+}
+
+.aArtistLabel {
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+}
+
+.aRatingLabel {
+    float: right;
+    font-size: 16px;
+    padding-top: 2px;
+}
+
+#sTrendingPager {
+    display: none;
+}
+
+.aaArtistLabel {
+    color: #818181;
+    font-size: 25px;
+}
+
+.artistTD {
+    text-align: center;
+}
+
+.ssTrendingTable, .aaaTrendingTable, .aaaaTrendingTable, .ssTopTable, .aaaTopTable {
+    display: none;
+}
+
+
 /*----------DROPDOWN STUFF------------*/
 .dropDown {
     display: inline-block;
