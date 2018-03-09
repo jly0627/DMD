@@ -11,7 +11,7 @@ namespace Digital_Music_Distributors
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('swag');", true);
         }
 
         protected String convertSeconds(int seconds)
@@ -19,5 +19,11 @@ namespace Digital_Music_Distributors
             TimeSpan time = TimeSpan.FromSeconds(seconds);
             return time.ToString(@"hh\:mm\:ss\:fff");
         }
+
+        protected void csharpAlert(object sender, EventArgs e)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('swag');", true);
+        }
+
     }
 }

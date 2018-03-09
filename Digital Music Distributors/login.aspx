@@ -1,5 +1,57 @@
+
+
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" %>
 <!DOCTYPE HTML>
+<script runat="server">
+
+    void Page_Load(Object sender, EventArgs e)
+    {
+        
+
+    }
+
+
+    void btnLoginClick(Object sender, EventArgs e)
+    {
+        var nameFound = false;  
+        string name = Request.Form["email"];
+        SqlDataSource userSource = userDataSource;
+
+        System.Data.DataView dv = (System.Data.DataView)userSource.Select(DataSourceSelectArguments.Empty);
+        System.Data.DataTable dt = dv.ToTable();
+        System.Data.DataSet ds = new System.Data.DataSet();
+        ds.Tables.Add(dt);
+        foreach (System.Data.DataTable table in ds.Tables)
+        {
+            foreach (System.Data.DataRow row in table.Rows)
+            {
+                foreach (object item in row.ItemArray)
+                {
+                    if (item.ToString().Equals(name))
+                    {
+                        nameFound = true;
+                    }
+
+                }
+            }
+        }
+        if (nameFound)
+        {
+            Server.Transfer("index.aspx", true);
+        }
+        else
+        {
+            System.Diagnostics.Debug.WriteLine("USER NOT FOUND IN THE DATABASE");
+            System.Diagnostics.Debug.WriteLine(name);
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('SORRY USER NOT FOUND IN DATABASE');", true);
+
+
+        }
+
+    }
+
+</script>
+<form runat="server">
 <html>
 	<head>
 		<title>DMD Login</title>
@@ -39,29 +91,35 @@
 							<div class="tab-content">
 								<h3>Login</h3>
 								<div class="row form-group">
-									<div class="col-md-12">
-										<label for="email">Email address</label>
-										<input type="text" id="email" class="form-control">
+									<div class="col-md-12"> 
+                                        
+                                        <asp:TextBox ID="email" CssClass="form-control" Text="" runat="server" />
+                                        
 									</div>
 								</div>
 								<div class="row form-group">
 									<div class="col-md-12">
 										<label for="password">Password</label>
 										<input type="text" id="password" class="form-control">
-										<button id="forgotPassword" onclick="forgot()" class="onlytext">&#160;Forgot your password?</button>
+										<button id="forgotPassword" onclick="forgot();return false;" class="onlytext">&#160;Forgot your password?</button>
 									</div>
 									<div id="newText" class="col-md-12">That sucks.</div>
 								</div>
 								<div class="row form-group">
 									<div class="col-md-12">
-										New to DMD?<button onclick="showModal()" class="onlytext">&#160;&#160;Create an account.</button>
+										New to DMD?<button onclick="showModal();return false;" class="onlytext">&#160;&#160;Create an account.</button>
 									</div>
 								</div>
 								<div class="row form-group">
 									<div class="col-md-12">
-                                        <form action="index.aspx">
-										<input type="submit" class="btn btn-primary btn-block" value="Log In">
-									    </form>
+                                        <asp:Button ID="btnLogin" class="btn btn-primary btn-block" Text="Login" OnClick="btnLoginClick" runat="server" />
+                                        <asp:SqlDataSource
+                                        id="userDataSource"
+                                        runat="server"
+                                        DataSourceMode="DataSet"
+                                        ConnectionString="<%$ ConnectionStrings:ConnectionString%>"
+                                        SelectCommand="SELECT Email FROM CUSTOMER">
+                                        </asp:SqlDataSource>
                                     </div>
 								</div>
 							</div>
@@ -110,7 +168,7 @@
 					</div>										
 					<div class="row form-group">
 						<div class="col-md-12">
-							<input type="submit" class="btn btn-primary btn-block" value="Register">
+							<input type="submit" onclick="closeModal();return false;" class="btn btn-primary btn-block" value="Register">
 						</div>
 					</div>
 				</div>
@@ -119,4 +177,4 @@
 	</body>
 
 </html>
-
+</form>

@@ -85,8 +85,9 @@
     <Content Include="css\bootstrapOld.css" />
     <Content Include="css\custom-styles.css" />
     <Content Include="css\style.css" />
+    <Content Include="images\album.jpg" />
+    <Content Include="images\artist.png" />
     <Content Include="images\blackorchid.png" />
-    <Content Include="images\gallery-img-1-4col.jpg" />
     <Content Include="images\icon.png" />
     <Content Include="images\img_bg_2.jpg" />
     <Content Include="images\search.png" />
